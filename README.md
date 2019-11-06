@@ -82,16 +82,16 @@ Estimate of time needed to complete: 45 mins.
 
 Start time: 10:45 AM
 
-Finish time: 11:30 AM
+Finish time: 11:20 AM
 
-Actual time needed to complete: 1 Hour and 8 Minutes.
+Actual time needed to complete: 35 minutes
 
 ## Feature #6: Locations
 
 
 Estimate of time needed to complete: 30 mins.
 
-Start time:  AM
+Start time:  11:26 AM
 
 Finish time:  AM
 
