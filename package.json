@@ -1,7 +1,7 @@
 {
-  "name": "City Explorer",
+  "name": "lab-07-back-end",
   "version": "1.0.0",
-  "description": "",
+  "description": "**Author**: Conor McCue **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pseudotsuga/lab-07-back-end"
+    "url": "git+https://github.com/Pseudotsuga/lab-07-back-end.git"
   },
   "keywords": [],
   "author": "",
