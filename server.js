@@ -8,7 +8,8 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const errormessage = 'Lynnwood is the only city worth knowing.';
+const cors = require('cors');
+app.use(cors());
 
 //Define Port to be listened to
 const PORT = process.env.PORT || 3000;
@@ -16,25 +17,20 @@ const PORT = process.env.PORT || 3000;
 //Define Functional Routes
 app.get('/location', (request, response) => {
   const city = request.query.data;
-  if (city.toLowerCase() !== 'lynnwood'){
-    throw errormessage;
-  }
-  try{
-    const geoData = require('./data/geo.json');
-    const locationData = new Location (city, geoData);
-    response.send(locationData);
-  }
-  catch(error){
-    response.status(500).send(error);
-  }
+  const geoData = require('./data/geo.json');
+  const locationData = new Location (city, geoData);
+  response.send(locationData);
+  console.log(locationData);
 });
 
 app.get('/weather', (request, response) => {
   const weatherData = require('./data/darksky.json');
-  weatherData.daily.data.map( day => {
-    day = new Forecast (day);
-  });
-  response.send(weatherData.daily.data);
+  const forecastDataArray = [];
+  for(let i = 0; i < weatherData.daily.data.length; i++){
+    let forecastData = new Forecast (i, weatherData);
+    forecastDataArray.push(forecastData);
+  }
+  response.send(forecastDataArray);
 });
 
 // Helper Functions
@@ -45,9 +41,9 @@ function Location(city, geoData){
   this.longitude = geoData.results[0].geometry.location.lng;
 }
 
-function Forecast (day){
-  this.forecast = day.summary;
-  this.time = new Date(day.time * 1000).toDateString();
+function Forecast (i, weatherData){
+  this.forecast = weatherData.daily.data[i].summary;
+  this.time = new Date(weatherData.daily.data[i].time * 1000).toDateString();
 }
 
 //Non-valid page response
