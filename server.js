@@ -8,14 +8,10 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const cors = require('cors');
 const errormessage = 'Lynnwood is the only city worth knowing.';
 
 //Define Port to be listened to
 const PORT = process.env.PORT;
-
-//Default routes and error
-app.use(express.static('./front-end'));
 
 //Define Functional Routes
 app.get('/location', (request, response) => {
