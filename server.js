@@ -25,12 +25,9 @@ app.get('/location', (request, response) => {
 
 app.get('/weather', (request, response) => {
   const weatherData = require('./data/darksky.json');
-  const forecastDataArray = [];
-  for(let i = 0; i < weatherData.daily.data.length; i++){
-    let forecastData = new Forecast (i, weatherData);
-    forecastDataArray.push(forecastData);
-  }
-  response.send(forecastDataArray);
+  const dailyWeather = weatherData.daily.data;
+  let newdailyWeather = dailyWeather.map(day => new Forecast(day));
+  response.send(newdailyWeather);
 });
 
 // Helper Functions
@@ -41,9 +38,9 @@ function Location(city, geoData){
   this.longitude = geoData.results[0].geometry.location.lng;
 }
 
-function Forecast (i, weatherData){
-  this.forecast = weatherData.daily.data[i].summary;
-  this.time = new Date(weatherData.daily.data[i].time * 1000).toDateString();
+function Forecast (day){
+  this.forecast = day.summary;
+  this.time = new Date(day.time * 1000).toDateString();
 }
 
 //Non-valid page response
