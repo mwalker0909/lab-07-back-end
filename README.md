@@ -1,7 +1,9 @@
 # Project Name
 
-**Author**: Conor McCue
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Author**: Conor McCue and Lindsay Peltier
+**Version**: 
+1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+2.0.0 (Refactor)
 
 ## Overview
 This application takes in spoofed data in the form of JSON files and references them to display the map and weather of a queried location.
@@ -70,5 +72,49 @@ Estimate of time needed to complete: 40 mins.
 Start time: 10:53 AM
 
 Finish time: 12:05 PM
+
+Actual time needed to complete: 1 Hour and 8 Minutes.
+
+## Feature #5: Data Formatting
+
+
+Estimate of time needed to complete: 45 mins.
+
+Start time: 10:45 AM
+
+Finish time: 11:30 AM
+
+Actual time needed to complete: 1 Hour and 8 Minutes.
+
+## Feature #6: Locations
+
+
+Estimate of time needed to complete: 30 mins.
+
+Start time:  AM
+
+Finish time:  AM
+
+Actual time needed to complete: 1 Hour and 8 Minutes.
+
+## Feature #6: Weather
+
+
+Estimate of time needed to complete: 30 mins.
+
+Start time:  AM
+
+Finish time:  AM
+
+Actual time needed to complete: 1 Hour and 8 Minutes.
+
+## Feature #6: EventBrite
+
+
+Estimate of time needed to complete: 20 mins.
+
+Start time:  AM
+
+Finish time:  AM
 
 Actual time needed to complete: 1 Hour and 8 Minutes.
