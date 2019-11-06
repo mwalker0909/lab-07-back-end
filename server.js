@@ -11,7 +11,7 @@ const app = express();
 const errormessage = 'Lynnwood is the only city worth knowing.';
 
 //Define Port to be listened to
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 //Define Functional Routes
 app.get('/location', (request, response) => {
