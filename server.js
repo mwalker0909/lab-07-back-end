@@ -30,6 +30,10 @@ app.get('/', landingPage);
 
 
 // Helper Functions
+function landingPage(request, response) {
+  response.status(200).send('Welcome to my back-end.');
+}
+
 function handleLocation(request, response) {
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${request.query.data}&key=${process.env.GEOCODE_API_KEY}`;
   superagent.get(url)
