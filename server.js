@@ -41,7 +41,7 @@ function handleLocation(request, response) {
       const geoData = data.body;
       const city = request.query.data;
       const location = new Location(city, geoData);
-      response.send(location);
+      response.status(200).send(location);
     })
     .catch( error => {
       console.error(error);
@@ -56,7 +56,7 @@ function handleWeather(request, response){
       const weatherData = data.body;
       const dailyWeather = weatherData.daily.data;
       let newdailyWeather = dailyWeather.map(day => new Forecast(day));
-      response.send(newdailyWeather);
+      response.status(200).send(newdailyWeather);
     })
     .catch( error => {
       console.error(error);
