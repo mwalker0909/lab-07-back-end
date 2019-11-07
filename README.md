@@ -28,6 +28,10 @@ This application takes in spoofed data in the form of JSON files and references 
 
 11-05-2019 12:05pm - Application now has integrated error handling for locales outside of the dataset. 
 
+<!-- Add Lab 7 Changelog Notes -->
+
+11-07-2019 10:02AM - Database created and functioning.
+
 ## Credits and Collaborations
 I worked with Trevor Thomphson for the duration of this lab.
 
