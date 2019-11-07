@@ -102,19 +102,19 @@ Actual time needed to complete: 1 Hour and 8 Minutes.
 
 Estimate of time needed to complete: 30 mins.
 
-Start time:  AM
+Start time:  12:53AM
 
-Finish time:  AM
+Finish time: 1:14AM
 
-Actual time needed to complete: 1 Hour and 8 Minutes.
+Actual time needed to complete: 21 minutes.
 
 ## Feature #6: EventBrite
 
 
-Estimate of time needed to complete: 20 mins.
+Estimate of time needed to complete: n/a
 
 Start time:  AM
 
 Finish time:  AM
 
-Actual time needed to complete: 1 Hour and 8 Minutes.
+Actual time needed to complete: n/a

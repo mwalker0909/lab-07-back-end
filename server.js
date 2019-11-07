@@ -20,12 +20,8 @@ const PORT = process.env.PORT || 3000;
 app.get('/location', handleLocation);
 
 
-app.get('/weather', (request, response) => {
-  const weatherData = require('./data/darksky.json');
-  const dailyWeather = weatherData.daily.data;
-  let newdailyWeather = dailyWeather.map(day => new Forecast(day));
-  response.send(newdailyWeather);
-});
+app.get('/weather', handleWeather);
+
 
 // Helper Functions
 function handleLocation(request, response) {
@@ -43,6 +39,20 @@ function handleLocation(request, response) {
     })
 }
 
+function handleWeather(request, response){
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  superagent.get(url)
+    .then( data => {
+      const weatherData = data.body;
+      const dailyWeather = weatherData.daily.data;
+      let newdailyWeather = dailyWeather.map(day => new Forecast(day));
+      response.send(newdailyWeather);
+    })
+    .catch( error => {
+      console.error(error);
+      response.status(500).send('Status: 500. Sorry, there is something not quite right');
+    })
+}
 
 function Location(city, geoData){
   this.search_query = city;
