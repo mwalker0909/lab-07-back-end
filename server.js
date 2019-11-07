@@ -18,10 +18,15 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 //Define Functional Routes
+
+//Requests to /location are handled with the handleLocation function.
 app.get('/location', handleLocation);
 
-
+//Requests to /weather are handled with the handleWeather function.
 app.get('/weather', handleWeather);
+
+//Requests to root are handled with the landingPage function.
+app.get('/', landingPage);
 
 
 // Helper Functions
