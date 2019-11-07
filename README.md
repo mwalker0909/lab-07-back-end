@@ -118,3 +118,36 @@ Start time:  AM
 Finish time:  AM
 
 Actual time needed to complete: n/a
+
+## Feature #7: Database
+
+
+Estimate of time needed to complete: 60 minutes.
+
+Start time:  9:10AM
+
+Finish time:  AM
+
+Actual time needed to complete: n/a
+
+## Feature #8: Server
+
+
+Estimate of time needed to complete: n/a
+
+Start time:  AM
+
+Finish time:  AM
+
+Actual time needed to complete: n/a
+
+## Feature #9: Deploy
+
+
+Estimate of time needed to complete: n/a
+
+Start time:  AM
+
+Finish time:  AM
+
+Actual time needed to complete: n/a
