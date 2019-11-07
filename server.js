@@ -7,11 +7,14 @@
 // 4. superagent to help with promises.
 
 require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
+
 app.use(cors());
 
 
@@ -81,4 +84,12 @@ function Forecast (day){
 app.use('*', (request, response) => response.status(404).send('Sorry, that route does not exist.'));
 
 //Begin listening to port
-app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
+client.connect()
+  .then( () => {
+    app.listen(PORT,() => {
+      console.log(`Listening on port ${PORT}`);
+    });
+  })
+  .catch( error => {
+    console.error(error)
+  });
