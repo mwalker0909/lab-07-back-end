@@ -3,7 +3,8 @@
 // Define the requirements of the server
 // 1. Express on top of Node
 // 2. dotenv to specify port (consume .env files)
-// 3. COrS (Cross-Origin Scripting)
+// 3. COrS to prevent (Cross-Origin Scripting)
+// 4. superagent to help with promises.
 
 require('dotenv').config();
 const express = require('express');
