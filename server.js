@@ -3,7 +3,8 @@
 // Define the requirements of the server
 // 1. Express on top of Node
 // 2. dotenv to specify port (consume .env files)
-// 3. COrS (Cross-Origin Scripting)
+// 3. COrS to prevent (Cross-Origin Scripting)
+// 4. superagent to help with promises.
 
 require('dotenv').config();
 const express = require('express');
@@ -17,13 +18,22 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 //Define Functional Routes
+
+//Requests to /location are handled with the handleLocation function.
 app.get('/location', handleLocation);
 
-
+//Requests to /weather are handled with the handleWeather function.
 app.get('/weather', handleWeather);
+
+//Requests to root are handled with the landingPage function.
+app.get('/', landingPage);
 
 
 // Helper Functions
+function landingPage(request, response) {
+  response.status(200).send('Welcome to my back-end.');
+}
+
 function handleLocation(request, response) {
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${request.query.data}&key=${process.env.GEOCODE_API_KEY}`;
   superagent.get(url)
@@ -31,7 +41,7 @@ function handleLocation(request, response) {
       const geoData = data.body;
       const city = request.query.data;
       const location = new Location(city, geoData);
-      response.send(location);
+      response.status(200).send(location);
     })
     .catch( error => {
       console.error(error);
@@ -46,7 +56,7 @@ function handleWeather(request, response){
       const weatherData = data.body;
       const dailyWeather = weatherData.daily.data;
       let newdailyWeather = dailyWeather.map(day => new Forecast(day));
-      response.send(newdailyWeather);
+      response.status(200).send(newdailyWeather);
     })
     .catch( error => {
       console.error(error);
