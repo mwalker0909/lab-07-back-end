@@ -126,9 +126,9 @@ Estimate of time needed to complete: 60 minutes.
 
 Start time:  9:10AM
 
-Finish time:  AM
+Finish time:  10:01AM
 
-Actual time needed to complete: n/a
+Actual time needed to complete: 51 minutes.
 
 ## Feature #8: Server
 
