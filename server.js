@@ -14,6 +14,7 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
+client.on('error', err => console.error(err));
 
 app.use(cors());
 
@@ -44,6 +45,7 @@ function handleLocation(request, response) {
     .then( data => {
       const geoData = data.body;
       const city = request.query.data;
+      checkDB(city);
       const location = new Location(city, geoData);
       response.status(200).send(location);
     })
@@ -78,6 +80,13 @@ function Location(city, geoData){
 function Forecast (day){
   this.forecast = day.summary;
   this.time = new Date(day.time * 1000).toDateString();
+}
+
+function checkDB (input){
+  const SQL = ` locations(city_name) VALUES('${input}')`;
+  client.query(SQL, (err, res) => {
+    err ? console.error(err) : console.log(res.rows);
+  });
 }
 
 //Non-valid page response
