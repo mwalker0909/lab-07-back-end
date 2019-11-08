@@ -1,6 +1,5 @@
 'use strict';
 
-
 require('dotenv').config();
 
 const express = require('express');
@@ -12,13 +11,10 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 
-
 const client = new pg.Client(process.env.DATABASE_URL);
-
 
 client.connect();
 client.on('err', err => console.error(err));
-
 
 //error message
 let errorMessage = () => {
@@ -32,6 +28,10 @@ let errorMessage = () => {
 
 // this is my helper function
 let lookup = (handler) => {
+  console.log('HANDLER', handler);
+  console.log('HANDLER - LOCATION', handler.location);
+  console.log('HANDLER LOCATION ID', handler.location.id);
+  
   const SQL = `SELECT * FROM ${handler.tableName} WHERE location_id=$1`;
   return client.query(SQL, [handler.location.id])
     .then(result => {
@@ -46,6 +46,7 @@ let lookup = (handler) => {
 
 let deleteByLocationId = (table, location_id) => {
   const SQL = `DELETE FROM ${table} WHERE location_id=${location_id}`;
+  console.log('**********************************', client.query(SQL));
   return client.query(SQL);
 };
 
@@ -100,10 +101,8 @@ function Restaurants(data) {
   this.created_at = Date.now();
 }
 
+// Location  lookup / fetch / prototype
 
-//--------------------------------
-// Location
-//--------------------------------
 
 //Static function
 Location.lookup = handler => {
@@ -136,7 +135,6 @@ Location.fetchLocation = (query) => {
         .catch(console.error);
     });
 };
-
 Location.prototype.save = function(){
   let SQL = `INSERT INTO locations 
     (search_query, formatted_query, latitude, longitude)
@@ -148,17 +146,15 @@ Location.prototype.save = function(){
   return client.query(SQL, values);
 };
 
-//--------------------------------
+
 // Weather
-//--------------------------------
+
 Weather.prototype.save = function(id){
   let SQL = `INSERT INTO weathers 
     (forecast, time, created_at, location_id)
     VALUES ($1, $2, $3, $4);`;
-
   let values = Object.values(this);
   values.push(id);
-
   return client.query(SQL, values);
 };
 
