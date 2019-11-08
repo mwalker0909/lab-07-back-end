@@ -1,5 +1,9 @@
-
-DROP TABLE IF EXISTS weather, yelp, movies, meetups, trails, locations;
+DROP TABLE IF EXISTS weathers;
+DROP TABLE IF EXISTS yelp;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS meetups;
+DROP TABLE IF EXISTS trails;
+DROP TABLE IF EXISTS locations;
 -- found information in class 9 video @ 2:31.34 --
 
 CREATE TABLE locations(
@@ -11,7 +15,7 @@ CREATE TABLE locations(
   created_at BIGINT
 );
 
-CREATE TABLE IF NOT EXISTS weather (
+CREATE TABLE weathers (
   id SERIAL PRIMARY KEY, 
   forcast VARCHAR(255), 
   time VARCHAR(255),
@@ -19,8 +23,7 @@ CREATE TABLE IF NOT EXISTS weather (
   location_id INTEGER NOT NULL REFERENCES locations(id)
 );
 
-
-  CREATE TABLE IF NOT EXISTS yelp (
+  CREATE TABLE yelp (
    id SERIAL PRIMARY KEY,
    name VARCHAR(255),
    image_url VARCHAR(255),
@@ -31,7 +34,7 @@ CREATE TABLE IF NOT EXISTS weather (
    location_id INTEGER NOT NULL REFERENCES locations(id) 
   );
 
-    CREATE TABLE IF NOT EXISTS movies (
+  CREATE TABLE movies (
       id SERIAL PRIMARY KEY,
       title VARCHAR(255),
       overview VARCHAR(1000),
@@ -44,26 +47,3 @@ CREATE TABLE IF NOT EXISTS weather (
       location_id INTEGER NOT NULL REFERENCES location_id
     );
 
-    CREATE TABLE IF NOT EXISTS meetups (
-      id SERIAL PRIMARY KEY,
-      link VARCHAR(255),
-      name VARCHAR(255),
-      event_date CHAR(15),
-      host VARCHAR(255),
-      created_at BIGINT,
-      location_id INTEGER NOT NULL REFERENCES location_id
-    );
-
-    CREATE TABLE IF NOT EXISTS trails (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(255),
-      location VARCHAR(255),
-      length NUMERIC(4, 1),
-      stars NUMERIC(2, 1),
-      summary VARCHAR(255),
-      conditions TEXT,
-      conditions_date CHAR(10),
-      conditions_time CHAR(8),
-      created_at BIGINT,
-      location_id INTEGER NOT NULL REFERENCES location_id
-    );
