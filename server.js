@@ -9,18 +9,18 @@
 require('dotenv').config();
 
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
+const PORT = process.env.PORT || 3000;
+const app = express();
+app.use(cors());
+
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', err => console.error(err));
 
-app.use(cors());
 
 
-//Define Port to be listened to
-const PORT = process.env.PORT || 3000;
 
 //Define Functional Routes
 
